@@ -25,10 +25,11 @@ mongoose.connect(process.env.MONGODB_URI)
 app.get("/", (req, res) => res.send("API is running..."));
 
 // Routes
-app.use("/api/users", userRoutes);
-app.use("/api/product", productRoutes);
-app.use("/api/cart", cartRoutes);
-app.use("/api/orders", orderRoutes);
+const baseUrl = "/api"; // Define the base URL
+app.use(`${baseUrl}/users`, userRoutes);
+app.use(`${baseUrl}/product`, productRoutes);
+app.use(`${baseUrl}/cart`, cartRoutes);
+app.use(`${baseUrl}/orders`, orderRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
