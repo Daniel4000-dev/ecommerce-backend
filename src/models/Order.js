@@ -34,11 +34,8 @@ const OrderSchema = new mongoose.Schema({
         enum: ["Card", "Pay-on-Delivery"],
         required: true,
     },
-    paymentStatus: {
-        type: String,
-        enum: ["Pending", "Completed", "Failed"],
-        default: "Pending",
-    },
+    isPaid: { type: Boolean, default: false },
+    isLocked: { type: Boolean, default: false },
     orderStatus: {
         type: String,
         enum: ["Pending", "Processing", "Shipped", "Delivered", "Cancelled"],

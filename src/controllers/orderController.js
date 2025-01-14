@@ -1,20 +1,22 @@
 const Order = require("../models/Order");
 const Cart = require("../models/Cart");
-
+const Payment = require("../models/Payment");
 
 // Create a new order
 exports.createOrder = async (req, res) => {
+    const { items, deliveryAddress, paymentMethod, totalPrice } = req.body;
+    if (!items || items.length === 0) {
+        return res.status(400).json({ message: "No items provided" });
+    }
+
+    if (!deliveryAddress) {
+        return res.status(400).json({ message: "Delivery address is required" });
+    }
+
+    if (!paymentMethod) {
+        return res.status(400).json({ message: "Payment method is required" });
+    }
     try {
-        const { items, deliveryAdress, paymentMethod } = req.body;
-
-        if (!items || items.length === 0) {
-            return res.status(400).json({ message: "No items in the order" });
-        }
-
-        if (!deliveryAddress || !paymentMethod) {
-            return res.status(400).json({ message: "Shipping address and payment method are required" });
-        }
-
         // Calculate total price
         let totalPrice = 0;
         items.forEach(item => {
@@ -26,8 +28,10 @@ exports.createOrder = async (req, res) => {
             user: req.user._id,
             items,
             deliveryAddress,
-            paymentMethod,
             totalPrice,
+            paymentMethod,
+            isPaid: false,
+            orderStatus: "Pending",
         });
 
         res.status(201).json({ message: "Order created successfully", order });
