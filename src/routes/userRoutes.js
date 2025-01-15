@@ -62,7 +62,7 @@ const router = express.Router();
  *        description: Validation error
  */
 router.post("/register", registerUser); // Register new user
-
+ 
 /**
  * @swagger
  * /users/login:

@@ -14,7 +14,7 @@ const options = {
                 description: "Production Server",
             },
             {
-                url: "http://localhost:3000/api/", // Local development server
+                url: "http://localhost:3000/", // Local development server
                 description: "Local Development Server",
             },
         ],

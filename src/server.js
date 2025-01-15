@@ -34,7 +34,7 @@ app.get("/", (req, res) => res.send("API is running..."));
 
 // Routes
 const baseUrl = "/api"; // Define the base URL
-app.use(`${baseUrl}/users`, userRoutes);
+app.use(`/api/users`, userRoutes);
 app.use(`${baseUrl}/product`, productRoutes);
 app.use(`${baseUrl}/cart`, cartRoutes);
 app.use(`${baseUrl}/orders`, orderRoutes);
