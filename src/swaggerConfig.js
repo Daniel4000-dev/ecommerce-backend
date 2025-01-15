@@ -10,11 +10,11 @@ const options = {
         },
         servers: [
             {
-                url: "https://ecommerce-backend-ws07.onrender.com/", // Production server
+                url: "https://ecommerce-backend-ws07.onrender.com/api", // Production server
                 description: "Production Server",
             },
             {
-                url: "http://localhost:3000/", // Local development server
+                url: "http://localhost:3000/api", // Local development server
                 description: "Local Development Server",
             },
         ],
